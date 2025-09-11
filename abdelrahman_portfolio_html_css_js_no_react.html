@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abdelrahman Ashraf – Portfolio</title>
+  <meta name="description" content="Portfolio of Abdelrahman Ashraf Abdelaziz – Software Engineering student and AI & Machine Learning developer." />
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --ink: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --line: #e2e8f0; /* slate-200 */
+      --brand: #2563eb; /* blue-600 */
+      --brand-ink: #ffffff;
+      --chip: #eef2ff; /* indigo-50 */
+      --chip-ink: #3730a3; /* indigo-800 */
+    }
+    .dark {
+      --bg: #0b1220;
+      --card: #0f172a;
+      --ink: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #1f2937;
+      --brand: #3b82f6;
+      --brand-ink: #0b1220;
+      --chip: #111827;
+      --chip-ink: #c7d2fe;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color: var(--ink); background: var(--bg); }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .nav a { margin-left: 18px; font-size: 14px; color: var(--muted); }
+    .nav a:hover { color: var(--brand); }
+    .btn { display: inline-block; padding: 10px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+    .btn.primary { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+    .btn:hover { filter: brightness(1.02); box-shadow: 0 6px 16px rgba(0,0,0,.06); text-decoration: none; }
+
+    .hero { padding: 56px 0 24px; background: linear-gradient(180deg, color-mix(in srgb, var(--brand) 8%, var(--bg)) 0%, var(--bg) 60%); }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
+    .title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin: 0; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); margin-top: 6px; font-size: 18px; }
+    .list { list-style: none; padding: 0; margin: 14px 0 0; color: var(--muted); font-size: 14px; }
+    .list li { margin: 6px 0; }
+    .photo { aspect-ratio: 1 / 1; border-radius: 24px; border: 1px solid var(--line); background: var(--card); display: grid; place-items: center; color: var(--muted); font-size: 14px; }
+
+    section { padding: 48px 0; }
+    h2 { margin: 0 0 18px; font-size: 26px; }
+
+    .grid { display: grid; gap: 18px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .grid.two, .grid.three { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; box-shadow: 0 4px 14px rgba(0,0,0,.04); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .chip { background: var(--chip); color: var(--chip-ink); padding: 6px 10px; border-radius: 999px; font-size: 12px; border: 1px solid var(--line); }
+
+    .project { display: flex; flex-direction: column; overflow: hidden; }
+    .project .thumb { height: 160px; background: linear-gradient(135deg, color-mix(in srgb, var(--line) 50%, var(--card)) 0%, var(--card) 100%); border-radius: 12px; display: grid; place-items: center; color: var(--muted); font-size: 13px; }
+    .project h3 { margin: 12px 0 4px; font-size: 18px; }
+    .meta { color: var(--brand); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .actions { margin-top: 10px; display: flex; gap: 12px; }
+
+    .experience { display: grid; gap: 14px; }
+    .xp-item .org { color: var(--brand); font-weight: 600; font-size: 14px; }
+    .xp-item .role { font-weight: 700; margin-top: 4px; }
+    .xp-item .date { color: var(--muted); font-size: 13px; }
+
+    footer { color: var(--muted); font-size: 12px; padding: 40px 0 60px; text-align: center; }
+
+    .toolbar { display: flex; gap: 10px; align-items: center; }
+    .toggle { cursor: pointer; border-radius: 10px; border: 1px solid var(--line); padding: 8px 10px; background: var(--card); color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="toolbar">
+        <strong>Abdelrahman · Portfolio</strong>
+        <button id="themeToggle" class="toggle" title="Toggle dark mode">🌙 Dark</button>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1 class="title">Abdelrahman Ashraf Abdelaziz</h1>
+        <p class="subtitle">Software Engineering Student · AI & Machine Learning Developer</p>
+        <ul class="list">
+          <li><strong>Email:</strong> abdalrahman.ashraf.372@gmail.com</li>
+          <li><strong>Location:</strong> Cairo, Egypt</li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/abdalrahman-ashraf-2bb600252" target="_blank">LinkedIn</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/abdalrahmanashraf372-ship-it" target="_blank">GitHub</a></li>
+        </ul>
+        <div style="margin-top:16px; display:flex; gap:12px;">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#skills">Skills</a>
+        </div>
+      </div>
+      <div class="photo">Add Profile Photo</div>
+    </div>
+  </section>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="card">
+          <p class="muted">I am a motivated Software Engineering student who bridges advanced software development with real‑world impact—from GUI and database‑driven systems to explainable machine learning models for healthcare and smart‑city integrations. I also lead teams and projects through Enactus ECU with a focus on sustainability (Eco‑Peel).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>Programming</h3>
+            <div class="chips">
+              <span class="chip">C++</span>
+              <span class="chip">C#</span>
+              <span class="chip">Python</span>
+              <span class="chip">SQL</span>
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>AI / Machine Learning</h3>
+            <div class="chips">
+              <span class="chip">Machine Learning</span>
+              <span class="chip">Predictive Modeling</span>
+              <span class="chip">Data Analysis</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Tools</h3>
+            <div class="chips">
+              <span class="chip">SQL Server</span>
+              <span class="chip">Power BI</span>
+              <span class="chip">Cisco Packet Tracer</span>
+              <span class="chip">GitHub</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Soft Skills</h3>
+            <div class="chips">
+              <span class="chip">Leadership</span>
+              <span class="chip">Problem‑Solving</span>
+              <span class="chip">Teamwork</span>
+              <span class="chip">Communication</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div style="display:flex; align-items:end; justify-content:space-between; gap:16px;">
+          <h2>Projects</h2>
+          <p class="muted" style="font-size:13px;">Tip: replace placeholders with screenshots and add GitHub/Live links.</p>
+        </div>
+        <div class="grid three">
+          <!-- Project: Heart Disease Predictions -->
+          <article class="card project">
+            <div class="thumb">Heart disease ML dashboard (placeholder)</div>
+            <div class="meta">Machine Learning</div>
+            <h3>Heart Disease Predictions</h3>
+            <p class="muted">Built supervised ML models (Logistic Regression, Random Forest, SVM) to estimate cardiovascular risk from patient features (age, cholesterol, blood pressure, glucose). Delivered an interpretable dashboard and report.</p>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">scikit‑learn</span><span class="chip">Matplotlib</span>
+            </div>
+            <div class="actions">
+              <a class="btn" href="#">Live / Demo</a>
+              <a class="btn" href="#">Repository</a>
+            </div>
+          </article>
+
+          <!-- Project: ATM System -->
+          <article class="card project">
+            <div class="thumb">ATM app UI (placeholder)</div>
+            <div class="meta">C++ · SQL Server · .NET Framework</div>
+            <h3>ATM System</h3>
+            <p class="muted">GUI‑based ATM with withdrawals, deposits, transfers, and inquiries; implemented a recovery file system to prevent data loss.</p>
+            <div class="chips"><span class="chip">C++</span><span class="chip">WinForms</span><span class="chip">SQL Server</span></div>
+            <div class="actions"><a class="btn" href="#">Live / Demo</a><a class="btn" href="#">Repository</a></div>
+          </article>
+
+          <!-- Project: Hospital Management System -->
+          <article class="card project">
+            <div class="thumb">Hospital system UI (placeholder)</div>
+            <div class="meta">C++ · SQL Server · .NET Framework</div>
+            <h3>Hospital Management System</h3>
+            <p class="muted">Automated hospital records, reducing manual data entry time by ~40% and improving data reliability.</p>
+            <div class="chips"><span class="chip">C++</span><span class="chip">WinForms</span><span class="chip">SQL Server</span></div>
+            <div class="actions"><a class="btn" href="#">Live / Demo</a><a class="btn" href="#">Repository</a></div>
+          </article>
+
+          <!-- Project: Cinema Booking System -->
+          <article class="card project">
+            <div class="thumb">Cinema booking UI (placeholder)</div>
+            <div class="meta">C++ · SQL Server · .NET Framework</div>
+            <h3>Cinema Booking System</h3>
+            <p class="muted">Database‑integrated ticketing with real‑time seat availability and a user‑friendly GUI.</p>
+            <div class="chips"><span class="chip">C++</span><span class="chip">WinForms</span><span class="chip">SQL Server</span></div>
+            <div class="actions"><a class="btn" href="#">Live / Demo</a><a class="btn" href="#">Repository</a></div>
+          </article>
+
+          <!-- Project: CPU Scheduler -->
+          <article class="card project">
+            <div class="thumb">Scheduler visual (placeholder)</div>
+            <div class="meta">C# · OOP</div>
+            <h3>CPU Scheduler</h3>
+            <p class="muted">Educational simulator implementing FCFS, Round Robin, SJF, Priority, and SRTF with visual timelines.</p>
+            <div class="chips"><span class="chip">C#</span><span class="chip">WinForms</span></div>
+            <div class="actions"><a class="btn" href="#">Live / Demo</a><a class="btn" href="#">Repository</a></div>
+          </article>
+
+          <!-- Project: Tower of Hanoi -->
+          <article class="card project">
+            <div class="thumb">Hanoi visual (placeholder)</div>
+            <div class="meta">C++</div>
+            <h3>Tower of Hanoi</h3>
+            <p class="muted">Interactive implementation using linear data structures for step‑by‑step visualization.</p>
+            <div class="chips"><span class="chip">C++</span></div>
+            <div class="actions"><a class="btn" href="#">Live / Demo</a><a class="btn" href="#">Repository</a></div>
+          </article>
+
+          <!-- Project: PID Car -->
+          <article class="card project">
+            <div class="thumb">Robot car (placeholder)</div>
+            <div class="meta">Embedded Systems · PID</div>
+            <h3>PID Control of Obstacle Avoidance Car</h3>
+            <p class="muted">Programmed autonomous car for obstacle detection/avoidance; tuned PID parameters for stable motion.</p>
+            <div class="chips"><span class="chip">Embedded C</span><span class="chip">Sensors</span><span class="chip">PID</span></div>
+            <div class="actions"><a class="btn" href="#">Live / Demo</a><a class="btn" href="#">Repository</a></div>
+          </article>
+
+          <!-- Project: Eco‑Peel -->
+          <article class="card project">
+            <div class="thumb">Eco‑Peel (placeholder)</div>
+            <div class="meta">Sustainability · Product Development</div>
+            <h3>Eco‑Peel – Gluten‑Free Flour from Potato Waste</h3>
+            <p class="muted">Upcycled potato peel waste into gluten‑free functional flour; contributed to prototyping and documentation.</p>
+            <div class="chips"><span class="chip">R&D</span><span class="chip">Process Design</span><span class="chip">QC</span></div>
+            <div class="actions"><a class="btn" href="#">Live / Demo</a><a class="btn" href="#">Repository</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2>Experience & Internships</h2>
+        <div class="grid two">
+          <div class="card xp-item">
+            <div class="org">Enactus ECU</div>
+            <div class="role">Director – Project Management Committee</div>
+            <div class="date">Oct 2024 – Oct 2025</div>
+            <ul class="list" style="margin-top:10px;">
+              <li>Led cross‑functional planning and delivery across Technology, PR, and Operations.</li>
+              <li>Oversaw risk, budgets, and KPIs to maximize impact.</li>
+            </ul>
+          </div>
+          <div class="card xp-item">
+            <div class="org">Enactus ECU</div>
+            <div class="role">Team Leader – Technology Team (PMC)</div>
+            <div class="date">Oct 2023 – Oct 2024</div>
+            <ul class="list" style="margin-top:10px;">
+              <li>Built internal tools to enhance workflows and reporting.</li>
+              <li>Mentored peers on software tooling and process optimization.</li>
+            </ul>
+          </div>
+          <div class="card xp-item">
+            <div class="org">Talaat Moustafa Group</div>
+            <div class="role">Intern – Smart Cities Department (Newton, Orion)</div>
+            <div class="date">Jun – Jul 2025</div>
+            <ul class="list" style="margin-top:10px;">
+              <li>Configured and troubleshot IoT/surveillance/traffic systems.</li>
+              <li>Supported integration and performance testing in central network architectures.</li>
+            </ul>
+          </div>
+          <div class="card xp-item">
+            <div class="org">Talaat Moustafa Group</div>
+            <div class="role">Intern – IT Department</div>
+            <div class="date">Jun – Jul 2024</div>
+            <ul class="list" style="margin-top:10px;">
+              <li>Assisted in maintaining enterprise applications and infrastructure.</li>
+              <li>Contributed to upgrades and issue resolution to improve efficiency.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="container">
+        <h2>Achievements & Certifications</h2>
+        <div class="grid two">
+          <div class="card">Web Development Training (Frontend) – ECU</div>
+          <div class="card">Leadership & Project Management – Enactus ECU</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card">
+          <h2>Get in Touch</h2>
+          <p class="muted" style="margin-top:8px;">“My passion is turning code into impactful solutions that improve lives and create sustainable change.”</p>
+          <div class="grid two" style="margin-top:12px;">
+            <div class="card" style="padding:12px;">
+              <div class="muted">Email</div>
+              <div><a href="mailto:abdalrahman.ashraf.372@gmail.com">abdalrahman.ashraf.372@gmail.com</a></div>
+            </div>
+            <div class="card" style="padding:12px;">
+              <div class="muted">LinkedIn</div>
+              <div><a target="_blank" href="https://www.linkedin.com/in/abdalrahman-ashraf-2bb600252">/in/abdalrahman-ashraf-2bb600252</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Abdelrahman Ashraf. Built with HTML, CSS, and a sprinkle of JS.</div>
+  </footer>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle with localStorage
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') { document.body.classList.add('dark'); toggleBtn.textContent = '☀️ Light'; }
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      toggleBtn.textContent = dark ? '☀️ Light' : '🌙 Dark';
+    });
+  </script>
+</body>
+</html>
